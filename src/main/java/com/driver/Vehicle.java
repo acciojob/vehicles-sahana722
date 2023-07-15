@@ -1,61 +1,46 @@
 package com.driver;
 
-public class Car extends Vehicle {
-    private int wheels;
-    private String type;
-    private int doors;
-    private int gears;
-    private boolean isManual;
-    private int currentGear;
-    private int seats;
+public class Vehicle {
 
-    public Car(String name, int wheels, int doors, int gears, boolean isManual, String type, int seats) {
-        //Hint: Car extends Vehicle
-        super(name);
-        this.wheels = wheels;
-        this.doors = doors;
-        this.gears = gears;
-        this.isManual = isManual;
-        this.type = type;
-        this.seats = seats;
+    private String name;
+    private int currentSpeed;
+    private int currentDirection;
+
+    public Vehicle(String name) {
+        this.name = name;
+        this.currentSpeed = 0;
+        this.currentDirection = 0;
     }
 
-    public void changeGear(int newGear){
-        this.currentGear = newGear;
-        System.out.println("changeGear method called - The gear is changed to: " + currentGear);
+    public void steer(int direction){
+        //direction is in degrees, add it to the current direction
+        this.currentDirection +=direction;
+        System.out.println("steer method called - The direction is changed to: " + currentDirection + " degrees");
     }
 
-    public void changeSpeed(int newSpeed, int newDirection){
-        move(newSpeed, newDirection);
-        System.out.println("changeSpeed method called - The speed is changed to: " + newSpeed +
-                ", and the direction is changed to: " + newDirection + " degrees");
+
+
+    public void move(int speed, int direction){
+        //set the values of currentSpeed and currentDirection
+        this.currentSpeed = speed;
+        this.currentDirection = direction;
+        System.out.println("move method called - The speed is changed to: " + currentSpeed + ", and the direction is changed to: " + currentDirection + " degrees");
     }
 
-    public int getWheels() {
-        return wheels;
+    public void stop(){
+        this.currentSpeed = 0;
+        System.out.println("stop method called - The vehicle is stopped");
     }
 
-    public String getType() {
-        return type;
+    public String getName() {
+        return name;
     }
 
-    public int getDoors() {
-        return doors;
+    public int getCurrentSpeed() {
+        return currentSpeed;
     }
 
-    public int getGears() {
-        return gears;
-    }
-
-    public boolean isManual() {
-        return isManual;
-    }
-
-    public int getCurrentGear() {
-        return currentGear;
-    }
-
-    public int getSeats() {
-        return seats;
+    public int getCurrentDirection() {
+        return currentDirection;
     }
 }
